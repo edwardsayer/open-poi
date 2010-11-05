@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.openpoi.server.domain">
+	<class name="Category">
+        <id name="id">
+			<generator class="native"/>
+		</id>
+        <property name="name" type="string"/>
+	</class>
+	<class name="Poi">
+        <id name="id">
+			<generator class="native"/>
+		</id>
+        <property name="name" type="string"/>
+        <property name="details" type="string"/>
+        <property name="location" type="org.hibernatespatial.GeometryUserType"/>
+        <set name="categories" table="Poi_Category">
+        	<key column="PoiId"/>
+	        <many-to-many column="CategoryId" class="Category"/>
+        </set>
+	</class>
+	
+	<query name="getPoisWithinGeometryAndCategories"><![CDATA[
+        select poi from Poi as poi left join fetch poi.categories as category where within(poi.location, :within)=true and category.id in (:categories)
+	]]></query>
+	<query name="getPoisWithinGeometry"><![CDATA[
+        from Poi as poi left join fetch poi.categories where within(poi.location, :within)=true
+	]]></query>
+</hibernate-mapping>
+	

@@ -1,0 +1,151 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>OSM - Dynamic POI update</title>
+    <style type="text/css">
+#map {
+        width: 100%;
+        height: 100%;
+        border: 0px;
+        padding: 0px;
+        position: absolute;
+     }
+body {
+        border: 0px;
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+     }
+    </style>
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+    <script type="text/javascript"> 
+	OpenLayers.Format.JSON.PoiServer = OpenLayers.Class(OpenLayers.Format, {
+		read: function(data) {
+			data = new OpenLayers.Format.JSON().read(data);
+			result = []
+			for (var i = 0; i < data.length; i++) {
+				var feature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Point(data[i]["location"]["X"], data[i]["location"]["Y"]), data[i]);
+				result.push(feature);
+			}
+	
+			return result;
+		},
+		
+	    CLASS_NAME: "OpenLayers.Format.JSON.PoiServer"
+	});
+	OpenLayers.Protocol.HTTP.PoiServer = OpenLayers.Class(OpenLayers.Protocol.HTTP, {
+		layer: null,
+		projectionPattern: /[0-9]+/i,
+		
+		read: function(options) {
+			options = options || {};
+			options.params = options.params || {};
+			options.params["z"] = this.layer.map.getZoom();
+			options.params["srid"] = this.layer.projection.getCode().match(this.projectionPattern);
+	
+			return OpenLayers.Protocol.HTTP.prototype.read.apply(this, [options]);
+		},
+		
+	    CLASS_NAME: "OpenLayers.Protocol.HTTP.PoiServer"
+	});
+
+        var map;
+		
+        function init(){
+            map = new OpenLayers.Map('map',
+                    { maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+                      numZoomLevels: 19,
+                      maxResolution: 156543.0399,
+                      units: 'm',
+                      projection: new OpenLayers.Projection("EPSG:900913"),
+                      displayProjection: new OpenLayers.Projection("EPSG:4326")
+                    });
+ 
+         	var layerOSM = new OpenLayers.Layer.OSM();
+		    var colors = ["black", "blue", "green", "red"];
+	 
+		    var style = new OpenLayers.Style({
+	                pointRadius: "${radius}",
+	                fillColor: "red",
+	                fillOpacity: 0.8,
+	                strokeColor: "#ff5555",
+	                strokeWidth: 2,
+	                strokeOpacity: 0.8
+	            }, {
+	                context: {
+	                    radius: function(feature) {
+				return Math.min(feature.attributes.count, 7) + 3;
+	                    },
+	                }
+	            });
+	 
+		    var pois = new OpenLayers.Layer.Vector("POI", {
+				projection: new OpenLayers.Projection("EPSG:4326"),
+				strategies: [
+					new OpenLayers.Strategy.BBOX(),
+					new OpenLayers.Strategy.Cluster()
+				],
+				protocol: new OpenLayers.Protocol.HTTP.PoiServer({
+                    url: "/OpenPoi-server/Pois/test",
+					format: new OpenLayers.Format.JSON.PoiServer(),
+				}),
+				styleMap: new OpenLayers.StyleMap({
+		                        "default": style,
+		                        "select": {
+		                            fillColor: "#8aeeef",
+		                            strokeColor: "#32a8a9"
+		                        }
+		                })
+		    });
+		    pois.protocol.layer = pois;
+	 
+		    map.addLayer(layerOSM);
+		    map.addLayer(pois);
+	 
+	    	selectControl = new OpenLayers.Control.SelectFeature(pois,
+	                {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect}); 
+	 
+	        var centre = new OpenLayers.LonLat(11.94, 57.744);
+	        var zoom = 11; 
+	
+		    map.addControl(selectControl);
+		    selectControl.activate();
+	 
+		    map.setCenter(centre.transform(map.displayProjection,map.projection), zoom);
+        }
+        
+        function onPopupClose(evt) {
+            selectControl.unselect(selectedFeature);
+        }
+ 
+        function onFeatureSelect(feature) {
+            selectedFeature = feature;
+	    text = '';
+	    for (var i in feature.cluster){
+		var feat = feature.cluster[i];
+		text += '<h3>'+feat.attributes.name + "</a></h3><div>" + feat.attributes.name + "</div><br />";
+	    }
+            popup = new OpenLayers.Popup("chicken", 
+                                     feature.geometry.getBounds().getCenterLonLat(),
+                                     null,
+                                     text,
+                                     true, onPopupClose);
+            feature.popup = popup;
+	    popup.setOpacity(0.7);
+            map.addPopup(popup);
+        }
+ 
+        function onFeatureUnselect(feature) {
+            map.removePopup(feature.popup);
+            feature.popup.destroy();
+            feature.popup = null;
+        }
+ 
+        // -->
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="map"></div>
+  </body>
+</html>
+
