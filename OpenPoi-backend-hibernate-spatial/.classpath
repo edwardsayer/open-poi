@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenPoi-domain-simple"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenPoi-server-api"/>
+	<classpathentry kind="var" path="M2_REPO/antlr/antlr/2.7.6/antlr-2.7.6.jar" sourcepath="M2_REPO/antlr/antlr/2.7.6/antlr-2.7.6-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/asm/asm/3.0/asm-3.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/vividsolutions/jts/1.10/jts-1.10.jar" sourcepath="M2_REPO/com/vividsolutions/jts/1.10/jts-1.10-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/google/code/guice/guice/2.0.1/guice-2.0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" sourcepath="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate-core/3.3.2.GA/hibernate-core-3.3.2.GA.jar" sourcepath="M2_REPO/org/hibernate/hibernate-core/3.3.2.GA/hibernate-core-3.3.2.GA-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/per/.m2/repository/org/hibernate/hibernate-core/3.3.2.GA/hibernate-core-3.3.2.GA-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/org/hibernatespatial/hibernate-spatial/1.0/hibernate-spatial-1.0.jar" sourcepath="M2_REPO/org/hibernatespatial/hibernate-spatial/1.0/hibernate-spatial-1.0-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
