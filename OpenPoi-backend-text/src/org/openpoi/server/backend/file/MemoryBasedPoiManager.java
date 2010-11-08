@@ -25,11 +25,16 @@ import org.openpoi.server.domain.simple.Poi;
 import com.google.inject.Inject;
 import com.vividsolutions.jts.geom.Geometry;
 
-public class FileBasedPoiManager implements PoiManager {
+/**
+ * A <code>PoiManager</code> that get its POIs from a
+ * <code>MemoryBasedPoiManager</code>.
+ * @author per
+ */
+public class MemoryBasedPoiManager implements PoiManager {
 	private final PoiMemoryDatabase database;
 	
 	@Inject
-	public FileBasedPoiManager(PoiMemoryDatabase database) {
+	public MemoryBasedPoiManager(PoiMemoryDatabase database) {
 		this.database = database;
 	}
 	
