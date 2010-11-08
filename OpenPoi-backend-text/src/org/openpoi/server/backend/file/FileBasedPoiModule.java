@@ -40,7 +40,7 @@ public class FileBasedPoiModule extends AbstractModule implements PluginModule {
 			}
 		}
 		
-		bind(FileBasedPoiManager.class);
+		bind(MemoryBasedPoiManager.class);
 		bind(PoiMemoryDatabase.class);
 		bind(LayerFileMapping.class).toInstance(layerFileMapping);
 	}
