@@ -12,7 +12,12 @@
 
   <context-param>
   	<param-name>layerPoiManager-test</param-name>
-  	<param-value>org.openpoi.server.DefaultPoiManager</param-value>
+  	<param-value>org.openpoi.server.backend.file.FileBasedPoiManager</param-value>
+  </context-param>
+
+  <context-param>
+  	<param-name>layerFile-test</param-name>
+  	<param-value>/home/per/Documents/poi-test.txt</param-value>
   </context-param>
   
   <filter>

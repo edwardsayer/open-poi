@@ -4,6 +4,8 @@
 	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
 		<project>OpenPoi-server-api</project>
+		<project>OpenPoi-domain-simple</project>
+		<project>OpenPoi-backend-text</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

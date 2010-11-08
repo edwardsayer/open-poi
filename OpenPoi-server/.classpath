@@ -109,5 +109,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/OpenPoi-server-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenPoi-backend-text"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/OpenPoi-domain-simple"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

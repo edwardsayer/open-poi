@@ -16,18 +16,29 @@
 
 package org.openpoi.server.web;
 
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javassist.bytecode.AnnotationsAttribute;
+import javassist.bytecode.ClassFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 
-
 import org.hibernate.Session;
-import org.openpoi.server.DefaultPoiManager;
 import org.openpoi.server.MissingLayerException;
 import org.openpoi.server.PoiManagerFactory;
 import org.openpoi.server.SimpleJsonPoiSerializer;
@@ -36,11 +47,12 @@ import org.openpoi.server.api.Cache;
 import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.PoiSerializer;
 import org.openpoi.server.api.annotations.CacheMaxSize;
-import org.openpoi.server.util.HibernateUtil;
+import org.openpoi.server.api.plugin.PluginModule;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Module;
 import com.google.inject.Provider;
 import com.google.inject.Scopes;
 import com.google.inject.servlet.GuiceServletContextListener;
@@ -49,35 +61,99 @@ import com.google.inject.servlet.ServletScopes;
 
 public class PoiServerContextListener extends GuiceServletContextListener {
 	private static final Pattern LAYER_MAPPING_PATTERN = Pattern.compile("^layerPoiManager-(.+)$");
+	private static final Class<?>[] PLUGIN_CONSTRUCTOR_ARG_TYPES = new Class[] { Map.class };
 	
-	private Class<PoiManager> poiManagerClass;
+	private Map<String, Object> initParameters;
 	private Class<PoiSerializer> poiSerializerClass;
 	private Class<Cache> cacheClass;
 	private int cacheMaxSize;
+
+	private Set<Class<PluginModule>> pluginModuleClasses;
 	public static Map<String, Class<PoiManager>> layerMapping;
 	private static Injector injector;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		initializeSettings(servletContextEvent.getServletContext());
+		initParameters = new HashMap<String, Object>();
+		ServletContext servletContext = servletContextEvent.getServletContext();
+		for (Enumeration<?> paramEnum = servletContext.getInitParameterNames(); paramEnum.hasMoreElements();) {
+			String param = (String) paramEnum.nextElement();
+			initParameters.put(param, servletContext.getInitParameter(param));
+		}
+		
+		initializeSettings(servletContext);
+		try {
+			pluginModuleClasses = getPluginModuleClasses(servletContext);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		super.contextInitialized(servletContextEvent);
+	}
+
+	private Set<Class<PluginModule>> getPluginModuleClasses(
+			ServletContext servletContext) throws IOException {
+		Set<Class<PluginModule>> result = new HashSet<Class<PluginModule>>();
+		Set libPaths = servletContext.getResourcePaths("/WEB-INF/lib");
+		for (Object jar : libPaths) {
+			try {
+				JarInputStream jis = new JarInputStream(servletContext.getResource((String) jar).openStream());
+				JarEntry jarEntry = null;
+				try {
+					while ((jarEntry = jis.getNextJarEntry()) != null) {
+						if (!jarEntry.isDirectory()) {
+							DataInputStream dis = new DataInputStream(
+									new BufferedInputStream(jis));
+							try {
+							ClassFile classFile = new ClassFile(dis);
+							AnnotationsAttribute aa = (AnnotationsAttribute) classFile.getAttribute(AnnotationsAttribute.visibleTag);
+							boolean isPluginModule = aa != null 
+								&& aa.getAnnotation("org.openpoi.server.api.annotations.OpenPoiPluginModule") != null;
+							if (isPluginModule) {
+								try {
+									result.add((Class<PluginModule>) Class
+											.forName(classFile.getName()));
+								} catch (ClassNotFoundException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+							} catch (IOException e) {
+								// Probably not a class
+							}
+						}
+					}
+				} catch (IOException e) {
+					servletContext.log("IOException while examining JAR \"" + jar + "\"; file \"" + jarEntry.getName() + "\".");
+					throw e;
+				} catch (RuntimeException e) {
+					servletContext.log("IOException while examining JAR \"" + jar + "\"; file \"" + jarEntry.getName() + "\".");
+					throw e;
+				} finally {
+					jis.close();
+				}
+			} catch (MalformedURLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		return result;
 	}
 
 	private void initializeSettings(ServletContext servletContext) {
 		layerMapping = new HashMap<String, Class<PoiManager>>();
 		
-		for (Enumeration paramEnum = servletContext.getInitParameterNames(); paramEnum.hasMoreElements();) {
-			String paramName = (String) paramEnum.nextElement();
+		for (String paramName : initParameters.keySet()) {
 			Matcher match = LAYER_MAPPING_PATTERN.matcher(paramName);
 			if (match.matches()) {
-				layerMapping.put(match.group(1), (Class<PoiManager>) tryGetClass(servletContext.getInitParameter(paramName), null));
+				layerMapping.put(match.group(1), (Class<PoiManager>) tryGetClass((String) initParameters.get(paramName), null));
 			}
 		}
-		poiManagerClass = (Class<PoiManager>) tryGetClass(servletContext.getInitParameter("poiManager"), DefaultPoiManager.class);
+		
 		poiSerializerClass = (Class<PoiSerializer>) tryGetClass(servletContext.getInitParameter("poiSerializer"), SimpleJsonPoiSerializer.class);
 		cacheClass = (Class<Cache>) tryGetClass(servletContext.getInitParameter("cache"), SimpleMemoryCache.class);
-		
+				
 		try {
 			cacheMaxSize = Integer.parseInt(servletContext.getInitParameter("cacheMaxSizeKb")) * 1024;
 		} catch (Exception e) {
@@ -86,25 +162,49 @@ public class PoiServerContextListener extends GuiceServletContextListener {
 	}
 
 	private Class<?> tryGetClass(String className, Class<?> defaultClass) {
-		if (className != null) {
-			try {
-				return Class.forName(className);
-			} catch (Exception e) {
-				return defaultClass;
+		try {
+			return Class.forName(className);
+		} catch (Exception e) {
+			if (defaultClass != null) {
+				return defaultClass;				
+			} else {
+				// TODO: what's sensible here?
+				throw new RuntimeException(e);
 			}
-		} else {
-			return defaultClass;
 		}
 	}
 
 	@Override
     protected Injector getInjector() {
-        injector = Guice.createInjector(new PoiServerModule(), new ServletModule() {
+		Collection<Module> modules = new ArrayList<Module>();
+		modules.add(new PoiServerModule());
+		modules.add(new ServletModule() {
             @Override
             protected void configureServlets() {
                 serve("/Pois/*").with(GetPoisServlet.class);
             }
         });
+		for (Class<PluginModule> pluginModuleClass : pluginModuleClasses) {
+			try {
+				PluginModule pluginModule = pluginModuleClass.newInstance();
+				pluginModule.setInitParameters(initParameters);
+				modules.add(pluginModule);
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+        injector = Guice.createInjector(modules);
         
         return injector;
     }
@@ -112,8 +212,6 @@ public class PoiServerContextListener extends GuiceServletContextListener {
     private class PoiServerModule extends AbstractModule {
         @Override
         protected void configure() {
-        	bind(PoiManager.class).to(poiManagerClass);
-        	bind(Session.class).toProvider(new SessionProvider()).in(ServletScopes.REQUEST);
         	bind(PoiManagerFactory.class).to(DefaultPoiManagerFactory.class).in(Scopes.SINGLETON);        	
             bind(Cache.class).to(cacheClass).in(Scopes.SINGLETON);
             bind(PoiSerializer.class).to(poiSerializerClass);
@@ -131,13 +229,6 @@ public class PoiServerContextListener extends GuiceServletContextListener {
 			} else {
 				throw new MissingLayerException("No PoiManager defined for layer \"" + layer + "\".");
 			}
-		}
-    }
-    
-    private static class SessionProvider implements Provider<Session> {
-		@Override
-		public Session get() {
-			return HibernateUtil.getSessionFactory().getCurrentSession();
 		}
     }
 }
