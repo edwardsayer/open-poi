@@ -10,6 +10,9 @@
   <modules>
     <module>api</module>
     <module>server</module>
+    <module>domain-simple</module>
+    <module>backend-text</module>
+    <module>backend-hibernate-spatial</module>
   </modules>
 </project>
 
