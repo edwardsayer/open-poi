@@ -9,11 +9,8 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <moduleSets>
     <moduleSet>
-    
-      <!-- Enable access to all projects in the current multimodule build! -->
       <useAllReactorProjects>true</useAllReactorProjects>
-      
-      <!-- Now, select which projects to include in this module-set. -->
+
       <includes>
         <include>org.openpoi:api</include>
         <include>org.openpoi:domain-simple</include>
@@ -22,16 +19,12 @@
       </includes>
       <binaries>
         <outputDirectory></outputDirectory>
-        <outputFileNameMapping>${module.artifactId}.${module.extension}</outputFileNameMapping>
         <unpack>false</unpack>
       </binaries>
     </moduleSet>
     <moduleSet>
-    
-      <!-- Enable access to all projects in the current multimodule build! -->
       <useAllReactorProjects>true</useAllReactorProjects>
-      
-      <!-- Now, select which projects to include in this module-set. -->
+
       <includes>
         <include>org.openpoi:server</include>
       </includes>
