@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -56,15 +57,14 @@ import com.google.inject.Scopes;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 
-public class PoiServerContextListener extends GuiceServletContextListener {
+public class OpenPoiWebApp extends GuiceServletContextListener {
 	private static final Pattern LAYER_MAPPING_PATTERN = Pattern.compile("^layerPoiManager-(.+)$");
-	private static final Class<?>[] PLUGIN_CONSTRUCTOR_ARG_TYPES = new Class[] { Map.class };
 	
 	private Map<String, Object> initParameters;
 	private int cacheMaxSize;
 
 	private Set<Class<PluginModule>> pluginModuleClasses;
-	public static Map<String, Class<PoiManager>> layerMapping;
+	private static Map<String, Class<PoiManager>> layerMapping;
 	private static Injector injector;
 	
 	@Override
@@ -85,6 +85,14 @@ public class PoiServerContextListener extends GuiceServletContextListener {
 		}
 
 		super.contextInitialized(servletContextEvent);
+	}
+	
+	public static Set<String> getLayerNames() {
+		return Collections.unmodifiableSet(layerMapping.keySet());
+	}
+	
+	public static PoiManager getPoiManager(String layer) throws MissingLayerException {
+		return injector.getInstance(PoiManagerFactory.class).create(layer);
 	}
 
 	private Set<Class<PluginModule>> getPluginModuleClasses(
@@ -145,6 +153,8 @@ public class PoiServerContextListener extends GuiceServletContextListener {
 				layerMapping.put(match.group(1), (Class<PoiManager>) tryGetClass((String) initParameters.get(paramName), null));
 			}
 		}
+		
+		layerMapping = Collections.unmodifiableMap(layerMapping); 
 						
 		try {
 			cacheMaxSize = Integer.parseInt(servletContext.getInitParameter("cacheMaxSizeKb")) * 1024;

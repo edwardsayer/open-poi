@@ -1,4 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<%@page import="org.openpoi.server.web.PoiServerContextListener"%><html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>OSM - Dynamic POI update</title>
     <style type="text/css">
@@ -17,53 +18,15 @@ body {
      }
     </style>
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
-    <script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+    <script src="javascript/OpenPoiProtocol.js"></script>
+    <script src="javascript/OpenPoiFormat.js"></script>
     <script type="text/javascript"> 
-	OpenLayers.Format.JSON.PoiServer = OpenLayers.Class(OpenLayers.Format, {
-		read: function(data) {
-			data = new OpenLayers.Format.JSON().read(data);
-			result = []
-			for (var i = 0; i < data.length; i++) {
-				var feature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Point(data[i]["location"]["X"], data[i]["location"]["Y"]), data[i]);
-				result.push(feature);
-			}
-	
-			return result;
-		},
-		
-	    CLASS_NAME: "OpenLayers.Format.JSON.PoiServer"
-	});
-	OpenLayers.Protocol.HTTP.PoiServer = OpenLayers.Class(OpenLayers.Protocol.HTTP, {
-		layer: null,
-		projectionPattern: /[0-9]+/i,
-		
-		read: function(options) {
-			options = options || {};
-			options.params = options.params || {};
-			options.params["z"] = this.layer.map.getZoom();
-			options.params["srid"] = this.layer.projection.getCode().match(this.projectionPattern);
-	
-			return OpenLayers.Protocol.HTTP.prototype.read.apply(this, [options]);
-		},
-		
-	    CLASS_NAME: "OpenLayers.Protocol.HTTP.PoiServer"
-	});
 
         var map;
-		
-        function init(){
-            map = new OpenLayers.Map('map',
-                    { maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
-                      numZoomLevels: 19,
-                      maxResolution: 156543.0399,
-                      units: 'm',
-                      projection: new OpenLayers.Projection("EPSG:900913"),
-                      displayProjection: new OpenLayers.Projection("EPSG:4326")
-                    });
- 
-         	var layerOSM = new OpenLayers.Layer.OSM();
+
+		function createPoiLayer(layerName) {
 		    var colors = ["black", "blue", "green", "red"];
-	 
+			 
 		    var style = new OpenLayers.Style({
 	                pointRadius: "${radius}",
 	                fillColor: "red",
@@ -78,16 +41,16 @@ body {
 	                    },
 	                }
 	            });
-	 
+
 		    var pois = new OpenLayers.Layer.Vector("POI", {
 				projection: new OpenLayers.Projection("EPSG:4326"),
 				strategies: [
 					new OpenLayers.Strategy.BBOX(),
 					new OpenLayers.Strategy.Cluster()
 				],
-				protocol: new OpenLayers.Protocol.HTTP.PoiServer({
-                    url: "/OpenPoi-server/Pois/test",
-					format: new OpenLayers.Format.JSON.PoiServer(),
+				protocol: new OpenLayers.Protocol.HTTP.OpenPoi({
+                    url: "Pois/test",
+					format: new OpenLayers.Format.JSON.OpenPoi(),
 				}),
 				styleMap: new OpenLayers.StyleMap({
 		                        "default": style,
@@ -98,18 +61,39 @@ body {
 		                })
 		    });
 		    pois.protocol.layer = pois;
+
+		    return pois;
+		}
+		
+        function init(){
+            map = new OpenLayers.Map('map',
+                    { maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+                      numZoomLevels: 19,
+                      maxResolution: 156543.0399,
+                      units: 'm',
+                      projection: new OpenLayers.Projection("EPSG:900913"),
+                      displayProjection: new OpenLayers.Projection("EPSG:4326")
+                    });
+ 
+         	var layerOSM = new OpenLayers.Layer.OSM();
+            
+			var poiLayers = [];
+<%			for (String layer : PoiServerContextListener.getLayerNames()) { %>
+				poiLayers.push(createPoiLayer("<%= layer %>"));
+<%			} %>
 	 
 		    map.addLayer(layerOSM);
-		    map.addLayer(pois);
+		    map.addLayers(poiLayers);
 	 
-	    	selectControl = new OpenLayers.Control.SelectFeature(pois,
+	    	/*selectControl = new OpenLayers.Control.SelectFeature(pois,
 	                {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect}); 
+   		    map.addControl(selectControl);
+   		    selectControl.activate();
+   		    */
 	 
 	        var centre = new OpenLayers.LonLat(11.94, 57.744);
 	        var zoom = 11; 
 	
-		    map.addControl(selectControl);
-		    selectControl.activate();
 	 
 		    map.setCenter(centre.transform(map.displayProjection,map.projection), zoom);
         }

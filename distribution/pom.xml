@@ -63,6 +63,7 @@
             <goal>single</goal>
           </goals>
           <configuration>
+            <finalName>OpenPoi-${project.version}</finalName>
             <descriptors>
               <descriptor>src/assemble/bin.xml</descriptor>
             </descriptors>
