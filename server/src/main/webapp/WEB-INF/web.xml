@@ -7,7 +7,7 @@
   
   <context-param>
   	<param-name>cacheMaxSizeKb</param-name>
-  	<param-value>2048</param-value>
+  	<param-value>128</param-value>
   </context-param>
 
   <context-param>
@@ -17,7 +17,7 @@
 
   <context-param>
   	<param-name>layerFile-test</param-name>
-  	<param-value>/home/per/Documents/poi-test.txt</param-value>
+  	<param-value>poi-test.txt</param-value>
   </context-param>
   
   <filter>
@@ -31,6 +31,6 @@
   </filter-mapping>
 
   <listener>
-    <listener-class>org.openpoi.server.web.PoiServerContextListener</listener-class>
+    <listener-class>org.openpoi.server.web.OpenPoiWebApp</listener-class>
   </listener>
 </web-app>
