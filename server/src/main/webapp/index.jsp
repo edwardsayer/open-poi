@@ -19,7 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  -->
-<%@page import="org.openpoi.server.web.OpenPoiWebApp"%><html xmlns="http://www.w3.org/1999/xhtml">
+<%@page import="org.openpoi.server.web.OpenPoiWebApp"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>OSM - Dynamic POI update</title>
     <style type="text/css">
@@ -69,7 +70,7 @@ body {
 					new OpenLayers.Strategy.Cluster()
 				],
 				protocol: new OpenLayers.Protocol.HTTP.OpenPoi({
-                    url: "Pois/test",
+                    url: "Pois/" + layerName,
 					format: new OpenLayers.Format.JSON.OpenPoi(),
 				}),
 				styleMap: new OpenLayers.StyleMap({
