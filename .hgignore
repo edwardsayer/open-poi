@@ -18,3 +18,10 @@ distribution/target
 .metadata
 Servers
 
+
+syntax: regexp
+^api/src/main/java/META-INF/MANIFEST\.MF$
+syntax: regexp
+^backend-text/src/main/java/META-INF/MANIFEST\.MF$
+syntax: regexp
+^domain-simple/src/main/java/META-INF/MANIFEST\.MF$
