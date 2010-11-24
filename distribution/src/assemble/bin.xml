@@ -34,5 +34,22 @@
         <unpack>false</unpack>
       </binaries>
     </moduleSet>
+    <moduleSet>
+      <useAllReactorProjects>true</useAllReactorProjects>
+
+      <includes>
+        <include>org.openpoi:examples</include>
+      </includes>
+      <binaries>
+        <outputDirectory>examples</outputDirectory>
+        <dependencySets>
+          <dependencySet>
+            <excludes>
+                <exclude>*</exclude>
+            </excludes>
+          </dependencySet>
+        </dependencySets>
+      </binaries>
+    </moduleSet>
   </moduleSets>
 </assembly>
