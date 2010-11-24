@@ -1,0 +1,537 @@
+1;Adalens Veteranbilsmuseum ;;17.869170;62.880104
+2;Agualimuseet Sala Konstfarening ;;16.609185;59.923018
+3;Almgrens Sidenvaveri and Museum ;;18.071056;59.317131
+4;Alvsborgs Lansmuseum ;;12.325981;58.379773
+5;Amals Slajd and Konsthantverk ;;12.706532;59.051908
+6;Anders Gammelgard ;;15.679317;62.167187
+7;Anten-Grafsnas Jarnvag ;;12.489694;58.07565
+8;Antikmuseet ;;13.198503;55.707095
+9;Aquaria Vattenmuseum ;;18.094692;59.32517
+10;Arbetets Museum ;;16.179334;58.58862
+11;Arboga Museum ;;15.837681;59.394355
+12;Arkitekturmuseet ;;18.083817;59.325688
+13;Armemuseum ;;18.079520;59.333982
+14;Arnskaldsviks Kommun ;;18.724512;63.29012
+15;Arnskaldsviks Museum ;;18.723514;63.289934
+16;Arsunda Viking ;;16.733341;60.523508
+17;Asgardarna ;;15.753593;60.342502
+18;Astasiatiska Museet ;;18.081800;59.326885
+19;Atelje Magi ;;11.924368;57.693687
+20;Auto Collection ;;11.951213;57.599125
+21;Auto Collection ;;11.944230;57.588205
+22;Axel Ebbes Konsthall ;;13.161577;55.375439
+23;Bankmuseum ;;11.963011;57.705584
+24;Batsmanskasernen ;;15.596579;56.160848
+25;Beredskapsmuseet ;;12.622889;56.125857
+26;Bergianska Trodgarden ;;18.055623;59.365295
+27;Bibliotekmuseum ;;12.947807;57.721275
+28;Bildmuseet ;;20.289708;63.829122
+29;Biografmuseum ;;15.758581;60.345685
+30;Biologiska Museet ;;17.623196;59.860959
+31;Biologiska Museet ;;17.622474;59.860692
+32;Biologiska Museet ;;12.951002;57.722172
+33;Biologiska Museet ;;12.950919;57.722348
+34;Biologiska Museet ;;18.097642;59.327051
+35;Blekinge Lans Museum ;;15.579919;56.16208
+36;Blekinge Museum ;;15.580441;56.161924
+37;Blekinge Sjafartsmuseum ;;14.865500;56.165613
+38;Bohuslans Museum ;;11.929178;58.348015
+39;Bohuslans Museum ;;11.926582;58.349291
+40;Bokmarksmuseum ;;12.477918;57.353436
+41;Bollnas Museet-Konsthallen ;;16.395734;61.349755
+42;Boras Konstmuseum ;;12.946936;57.721006
+43;Boras Museum ;;12.918136;57.721459
+44;Borgholms Stadsmuseum alands Kulturminnesfarening ;;16.658362;56.877682
+45;Bosjokloster ;;13.519449;55.877893
+46;Botaniska Trodgarden ;;17.626297;59.851008
+47;Botaniska Trodgarden ;;17.626920;59.850324
+48;Bror Hjorths Hus ;;17.619945;59.849433
+49;Bror Hjorts Hus ;;17.619366;59.849202
+50;Bruksmuseet Smedsgarden ;;16.779990;60.617021
+51;Bruksmuseum ;;17.073666;61.638535
+52;Bungemuseet ;;19.029310;57.854362
+53;Byggnadsvard Naas ;;12.400173;57.815792
+54;Byske Hantverksmuseum ;;21.222022;64.949349
+55;Carl Eldhs Ateljemuseum ;;18.052208;59.352085
+56;Carl Jularbomuseum ;;16.164291;60.148447
+57;Carolina Rediviva ;;17.632316;59.854723
+58;Charlotte Berlins Museum ;;13.823748;55.428726
+59;Chateau Smarod ;;11.721957;58.426715
+60;Children's Museum ;;15.145974;59.127761
+61;Claesson Ingvar ;;17.027773;58.766875
+62;Cornelis Vreeswijkmuseet ;;18.069803;59.325359
+63;Dalarnas Idrottsmuseum ;;15.654784;60.619813
+64;Dalarnas Museum ;;15.627057;60.603966
+65;Dalarnas Museum ;;15.628099;60.605822
+66;Dalslands Museum ;;12.437032;58.813901
+67;Dan Andersson Museum ;;15.185983;60.148966
+68;Dansmuseet ;;18.068308;59.329731
+69;Disagarden ;;17.628254;59.901025
+70;Dock- Och Textilsamling ;;16.202426;58.993618
+71;Doderhultar and Sjafartsmuseet ;;16.446665;57.263052
+72;Doderhultarns Atelje ;;16.449520;57.268717
+73;Dorotea Jakt Och Fiskemuseum ;;16.423170;64.260083
+74;Drottens Arkeologiska Museum ;;13.191227;55.702092
+75;Drottningholms Teatermuseum ;;18.125913;59.312186
+76;Dyvelstens Flottningsmuseum ;;13.447267;59.520212
+77;Ebbas Hus ;;13.006076;55.605376
+78;Eda Glasmuseum ;;12.261565;59.922805
+79;Eda Skans Museum ;;12.366045;59.766118
+80;Edsbyns Museum ;;15.810286;61.379339
+81;Edsvik Konst Och Kultur ;;17.960175;59.440693
+82;Ekocentrum ;;11.954435;57.749262
+83;Ekomuseum ;;15.566494;59.814559
+84;Ekomuseum ;;16.026158;59.939304
+85;Ekomuseum ;;15.807438;59.984829
+86;Ekomuseum Bergslagen ;;15.415106;60.139129
+87;Ekomuseum Bergslagen ;;15.410025;60.140011
+88;Eksharads Hembygdspark ;;13.498530;60.173231
+89;Elyseum ;;11.980700;57.704683
+90;Enelias Fantasivarld ;;13.886227;57.915108
+91;Enkopings Museum ;;17.079914;59.63593
+92;Eriksbergs Museum ;;14.979994;58.038535
+93;Ersta Diakonimuseum ;;18.089541;59.316784
+94;Eskilstuna Konstmuseum ;;16.512125;59.365441
+95;Eskilstuna Museer ;;16.508526;59.374626
+96;Etnografiska Museet ;;11.992825;57.700086
+97;Evolutionsmuseet ;;17.625374;59.850735
+98;Falbygdens Museum ;;13.552904;58.169074
+99;Falkenbergs Museum ;;12.494758;56.899106
+100;Fangelsemuseet ;;17.142782;60.672252
+101;Fars Harads Hembygdsfarening ;;13.707051;55.640584
+102;Fenomenalen ;;18.293165;57.639491
+103;Filmmuseum ;;14.156950;56.02985
+104;Fiskemuseet ;;11.643556;57.679594
+105;Fiskemuseum Fareningen Kusttraditioner ;;11.651648;57.687968
+106;Fjallvinden ;;15.250147;65.711426
+107;Fjarilshuset ;;11.975253;57.704236
+108;Fjarilshuset ;;18.029846;59.365019
+109;Fjarilsmuseet ;;14.296215;58.307576
+110;Flygvapenmuseum ;;15.514705;58.406657
+111;Flygvapenmuseum ;;15.523776;58.410595
+112;Folkens Museum Etnografiska ;;18.119588;59.333125
+113;Fornminnesgarden ;;14.969645;57.669227
+114;Fotomuseet Olympia ;;12.488353;56.903317
+115;Framtidsmuseet ;;15.432638;60.489561
+116;Framtidsmuseet ;;15.431475;60.488254
+117;Fredriksdal Museer Och Trodgardar ;;12.707789;56.058485
+118;Fredriksdals Friluftsmuseum ;;12.707999;56.057515
+119;Friluftsmuseat Gamla Linkoping ;;15.589770;58.40603
+120;Friluftsmuseet ;;11.188814;58.940522
+121;Friluftsmuseet Murberget ;;17.925014;62.646796
+122;Gamla Brukets Museum ;;13.544253;59.845693
+123;Gamla Prastgarden ;;19.144337;65.599204
+124;Gamla Uppsala Historiskt Centrum ;;17.634007;59.898067
+125;Gamla Uppsala- Historiskt Centrum ;;17.632554;59.898377
+126;Gammelgard ;;15.206259;60.147796
+127;Gammelgarden ;;15.976906;60.284432
+128;Gammeltomten ;;15.174005;61.725276
+129;Garnisonsmuseet ;;21.673644;65.813124
+130;Garvaregarden ;;17.545559;58.897836
+131;Gateborgs Konsthall ;;11.979390;57.697128
+132;Gateborgs Konstmuseum ;;11.979875;57.696914
+133;Gateborgs Konstmuseum ;;11.980147;57.696909
+134;Gateborgs Maritima Museum ;;11.960383;57.708582
+135;Gateborgs Museer ;;11.962935;57.704592
+136;Gateborgs Stadsmuseum ;;11.962819;57.706234
+137;Geologiska Museet ;;15.430633;60.484127
+138;Gislafs Smidesmuseum ;;14.296052;55.507104
+139;Gislaveds Industrimuseum ;;13.543815;57.296594
+140;Glasbruksmuseet ;;12.013936;57.832305
+141;Gotlands Fornsal ;;18.292785;57.64131
+142;Gotlands Konstmuseum ;;18.293985;57.639327
+143;Grabo Minnenas Museum ;;14.547837;59.333226
+144;Grafiska Museet i Gamla Linkoping ;;15.590848;58.405505
+145;Grekiskt Bibliotek and Arkiv i Sverige ;;18.065196;59.312431
+146;Grenna Museum ;;14.466737;58.022101
+147;Gripes Modellteatermuseum ;;17.010065;58.755206
+148;Gruvmuseum ;;15.207399;60.145947
+149;Gruvmuseum ;;20.642080;67.176488
+150;Gunnebo Slott ;;12.057904;57.65908
+151;Gustavianum ;;17.631915;59.857908
+152;Habo Lantbruksmuseum ;;14.069599;57.912222
+153;Hackman Rarstrand ;;13.161080;58.505825
+154;Haga Kusten Textil&Hantverksmus ;;18.038982;62.92081
+155;Haganas Konsthall ;;12.574364;56.200364
+156;Hallristningsmuseet ;;16.155750;58.591014
+157;Hallwylska Museet ;;18.074249;59.333211
+158;Hallwylska Museet ;;18.074476;59.333051
+159;Halmens Hus ;;12.237551;59.02724
+160;Halsinglands Museum ;;17.108122;61.727631
+161;Halsinglands Museum ;;17.107215;61.727815
+162;Hamlet Tranas Teatermuseum ;;14.975698;58.040225
+163;Handelsboden ;;15.431536;60.486262
+164;Hantverks- Och Friluftsmuseum ;;17.293938;62.398762
+165;Harby Museum ;;13.662074;55.855146
+166;Harjedalens Fjallmuseum ;;12.537597;62.548155
+167;Havets Hus ;;11.431499;58.268882
+168;Hembygdsfarening ;;11.816363;58.071954
+169;Hembygdsgard ;;14.639612;61.111629
+170;Hembygdsmuseet ;;12.494610;56.901291
+171;Hembygdsmuseum ;;15.847498;61.806505
+172;Hembygdsmuseum ;;20.661290;67.134052
+173;Historiska Museet ;;18.091390;59.334312
+174;Historiska Museet ;;18.091489;59.334497
+175;Historiska Museet O Myntkabinettet Lunds Universitet ;;13.195446;55.704497
+176;Hobby Och Leksaksmuseet ;;18.063214;59.318986
+177;Holmgrens Volkswagen Museum ;;15.344536;59.053896
+178;Hultgrensmuseet ;;15.276277;57.825157
+179;Huseby Klev Stenaldersmuseum ;;11.481842;58.176349
+180;Huseby Statarmuseum ;;14.590824;56.778842
+181;Huskvarna Fabriksmuseum ;;14.284301;57.785636
+182;Huskvarna Stadsmuseum ;;14.268552;57.819606
+183;Hyltans Industrimuseum ;;13.734813;57.340469
+184;Idrottsmuseet ;;12.694825;56.04834
+185;Ifaverkens Industrimuseum ;;14.468214;56.0754
+186;Industrimuseet ;;14.111566;57.698417
+187;Inlandsbanemuseat ;;17.541510;65.535201
+188;Innovatum Kunskapens Hus ;;12.275795;58.272425
+189;Innovatum Kunskapens Hus Ab ;;12.277247;58.271869
+190;Ivar Lo-Museet O Sallskapet ;;18.061947;59.320188
+191;Jankoping Lans Museum ;;14.174902;57.779185
+192;Jankopings Lans Museum ;;14.176339;57.779862
+193;Jarnvagsmuseet ;;13.449645;58.3833
+194;Jarnvagsmuseum ;;14.188534;56.014083
+195;Joe Hill Museet ;;17.150155;60.672213
+196;Joe Hill Museet ;;17.150520;60.672351
+197;Johanna Museat ;;13.521044;55.500367
+198;Judiska Museet ;;18.043372;59.341692
+199;Julita Gard ;;16.047662;59.149312
+200;Junibacken ;;18.092657;59.32941
+201;Jussi Bjarling Museet ;;15.431647;60.484908
+202;Jussi Bjarlingmuseet ;;15.431343;60.484682
+203;Kalmar Konstmuseum ;;16.353173;56.659483
+204;Kalmar Konstmuseum ;;16.352712;56.659126
+205;Kalmar Lans Museum ;;16.367858;56.663954
+206;Kanalmuseet ;;13.980198;58.837694
+207;Kanalmuseet ;;12.266713;58.268302
+208;Kanalmuseet ;;12.266151;58.267564
+209;Kanalmuseum ;;16.210908;59.61102
+210;Kangos Hembygdsmuseum ;;22.647223;67.475188
+211;Karlsborgs Museum ;;14.522968;58.530107
+212;Karnan ;;12.695865;56.047258
+213;Klasro Skolmuseum ;;17.928490;59.444782
+214;Klavrestrems Bruksmuseum ;;15.138655;57.137457
+215;Konst O Kultur Konservering ;;15.640319;60.614377
+216;Konst Och astasiatiska ;;13.410842;57.792672
+217;Konstcentrum ;;17.147750;60.67479
+218;Konsthallen ;;12.291588;58.285988
+219;Konsthallen i Hishult ;;13.309639;56.427665
+220;Konstmuseet ;;15.216919;59.272442
+221;Konstmuseet ;;11.979525;57.697453
+222;Konstmuseet ;;13.824381;55.428122
+223;Kopings Museum ;;16.000020;59.508517
+224;Krapperup Museum Och Konsthall ;;12.531872;56.262182
+225;Kristinehamns Konstmuseum ;;14.085651;59.327239
+226;Kristinehamns Konstmuseum ;;14.089616;59.326355
+227;Kukkola Fiskemuseum ;;24.037652;65.963636
+228;Kulbackens Museum ;;16.643138;57.766138
+229;Kulturen ;;13.196133;55.704638
+230;Kulturhistoriska Museet i Lund ;;13.196449;55.704646
+231;Kungliga Myntkabinettet ;;18.071300;59.325597
+232;Kungliga Myntkabinettet Sveriges Ekonomiska Museum ;;18.073333;59.326275
+233;Kvarnbygarden ;;12.030733;57.656307
+234;Kvibergs Museum ;;12.029308;57.737706
+235;Kvibergs Museum ;;12.025988;57.732881
+236;Laestadius Partet ;;23.378613;67.210437
+237;Laganland Bilmuseum ;;13.970589;56.918788
+238;Landsantikvarien ;;12.859765;56.675474
+239;Landstingsmuseet ;;15.218110;59.279771
+240;Langholmen Fangelsemuseum ;;18.027101;59.320816
+241;Lansmuseet Gavleborg ;;17.145146;60.673521
+242;Lansmuseet Gavleborg ;;17.150537;60.674234
+243;Lansmuseet Halmstad ;;12.861963;56.68086
+244;Lansmuseet Halmstad ;;12.861847;56.68052
+245;Lansmuseet Pe Gotland ;;18.292872;57.639572
+246;Lansmuseet Vasternorrland ;;17.930091;62.636207
+247;Lansmuseet Vasternorrland ;;17.924374;62.645569
+248;Leksaksmuseet ;;18.063177;59.318681
+249;Leksands Kulturhus ;;14.993391;60.730709
+250;Leksands Kulturhus ;;14.990213;60.731604
+251;Lesjafors Museum ;;14.189996;59.974481
+252;Lidinge Museum ;;18.134135;59.36696
+253;Liljevalchs Konsthall ;;18.096355;59.325724
+254;Liljevalchs Konsthall ;;18.096189;59.32602
+255;Limhamns Museum ;;12.941721;55.590025
+256;Limhamns Museum ;;12.941440;55.589993
+257;Lindesbergs Museum ;;15.230472;59.589733
+258;Linnas Rashult ;;14.199983;56.618519
+259;Linnatrodgarden Uppsala Universitet ;;17.634307;59.861964
+260;Linnemuseet ;;17.632943;59.861775
+261;Linnemuseet ;;17.633552;59.86145
+262;Lionardo Da Vinci Ideale ;;15.591527;56.16229
+263;Livrustkammaren ;;18.072623;59.326208
+264;Livrustkammaren-Kungliga Slottet ;;18.071947;59.326129
+265;Ljusdalsbygdens Museum ;;16.077893;61.828615
+266;Ljusdalsbygdens Museum ;;16.078388;61.828373
+267;Lodase Museum ;;12.154240;58.035938
+268;Lokmuseet ;;14.985489;60.071579
+269;Lomkallan Sarna Skogsmuseum ;;13.076028;61.693632
+270;Lundstremska Garden ;;17.720624;59.615914
+271;Male Geomuseum ;;18.750633;65.182399
+272;Mallebackens Vaffelbruk ;;12.673192;56.073469
+273;Malmahus Slott ;;12.986057;55.605339
+274;Malme Konsthall ;;12.998244;55.595199
+275;Malme Skolmuseum ;;13.008529;55.603713
+276;Malmohu... (sample);;12.986649;55.605095
+277;Malndals Hembygdsfarening O Museer ;;12.030847;57.65663
+278;Malndals Museum ;;12.031920;57.657845
+279;Malndals Museum ;;12.031042;57.657742
+280;Marinmuseum ;;15.598600;56.160631
+281;Marionettmuseet ;;18.069571;59.336823
+282;Mc ;;20.158688;63.838417
+283;Mc Museum ;;15.984205;60.273672
+284;Medelhavsmuseet ;;18.067811;59.329498
+285;Medelhavsmuseet ;;18.067110;59.32945
+286;Medicinhistoriska ;;11.966647;57.708987
+287;Medicinhistoriska ;;12.320485;58.375264
+288;Medicinhistoriska Museet ;;17.651222;59.828937
+289;Medicinhistoriska Museet ;;12.959769;57.724421
+290;Mentalvardsmuseet ;;15.711601;60.341862
+291;Mentalvardsmuseet Sater ;;15.714828;60.344175
+292;Millesgarden ;;18.119692;59.35946
+293;Motala Museum ;;15.065120;58.539647
+294;Motormuseum Alands ;;16.665730;56.881257
+295;Munktellmuseet ;;16.512254;59.376335
+296;Museat Naktergalen ;;15.856133;57.66598
+297;Museet i Varberg ;;12.242542;57.105476
+298;Museet Kvarnen ;;13.823973;55.427552
+299;Museet Kvarnen ;;14.160944;59.712569
+300;Museet Leksaksland ;;18.051496;59.344198
+301;Museisparvagen ;;16.736854;59.133908
+302;Museum A6 Farsvarshistoriska ;;14.201791;57.774664
+303;Museum Ajtt... (sample);;19.842996;66.603879
+304;Museum Alingsas ;;12.532257;57.92916
+305;Museum Gustavianum- Universitetsmuseum ;;17.632125;59.858543
+306;Musikmuseet ;;18.077727;59.333218
+307;Myntmuseet ;;16.167152;60.148804
+308;Nassje Jarnvagsmuseum ;;14.681492;57.644137
+309;Nationalmuseum ;;18.076646;59.329417
+310;Nationalmuseum ;;18.077269;59.328525
+311;Naturhistoriska Museet ;;11.948117;57.690257
+312;Naturhistoriska Museet ;;11.949601;57.690234
+313;Naturhistoriska Riksmuseet ;;18.052228;59.368808
+314;Naturhistoriska Riksmuseet ;;18.053492;59.368838
+315;Naturmuseum ;;15.120712;60.882183
+316;Naturum ;;18.356961;63.071871
+317;Navet Teknikcentrum ;;12.940195;57.731647
+318;Nobelmuseet ;;18.074140;59.337597
+319;Nobelmuseet i Karlskoga ;;14.534371;59.340841
+320;Nolhaga Slott ;;12.517702;57.93331
+321;Nordanstigs Kustmuseum ;;17.337859;61.956834
+322;Nordiska Akvarellmuseet ;;11.540813;57.988137
+323;Nordiska Museet ;;15.598373;60.6043
+324;Nordiska Museet ;;18.094789;59.329004
+325;Nordiska Museet ;;18.094172;59.329264
+326;Nordiska Museet Kulturarvet ;;15.597694;60.604674
+327;Nordiska Travmuseet ;;12.157327;59.3919
+328;Nordiska Travmuseet ;;12.155953;59.39087
+329;Norrbottens Jarnvagsmuseum ;;22.067433;65.596379
+330;Norrbottens Museum ;;22.140313;65.57918
+331;Norrbottens Museum ;;22.137787;65.582659
+332;Norrkopings Konstmuseum ;;16.190946;58.583138
+333;Norrkopings Konstmuseum ;;16.190481;58.583862
+334;Norrkopings Skolmuseum ;;16.185619;58.589026
+335;Norrkopings Skolmuseum ;;16.198897;58.589006
+336;Norrkopings Stadsmuseum ;;16.179742;58.590062
+337;Norrkopings Stadsmuseum ;;16.180085;58.58994
+338;Norrtalje Konsthall ;;18.705105;59.757792
+339;Nybyggarmuseum ;;20.615315;67.846568
+340;Nynashamns Jarnvagsmuseum ;;17.938322;58.907931
+341;Observatoriemuseet ;;18.054447;59.34058
+342;Ojtte ;;19.842021;66.603849
+343;Olle Olsson-Huset ;;18.017146;59.361658
+344;Olympia ;;12.488754;56.903274
+345;Onge Zoologiska Museum ;;15.662593;62.521492
+346;Orebro Lans Museum ;;15.217649;59.272105
+347;Orebro Lans Museum ;;15.217225;59.27249
+348;Ostergatlands Lansmuseum ;;15.616647;58.414042
+349;Osterlens Museum ;;14.347917;55.556442
+350;Paleontologiska Museet ;;17.621154;59.8498
+351;Palsje Malla ;;12.699252;56.045211
+352;Pansarmuseet ;;13.594446;58.384293
+353;Pc Museum ;;11.821785;58.057675
+354;Polhemsmuseat ;;16.211509;60.431104
+355;Polishistoriska Museet ;;18.037039;59.331617
+356;Porfyr Och Hagstrem Museet ;;14.037431;61.229782
+357;Porfyrmuseet ;;14.037713;61.229506
+358;Porslinsmuseum ;;16.379205;61.452364
+359;Postmuseum ;;18.068120;59.324085
+360;Prastgardsmuseum ;;16.180943;61.708859
+361;Prins Eugens Waldemarsudde ;;18.115091;59.320356
+362;Prins Eugens Waldermarsudde ;;18.116869;59.322452
+363;Psykiatrihistoriska Museet ;;17.652222;59.828752
+364;Psykiatrihistoriska Museet ;;14.827688;56.867463
+365;Pumphuse... (sample);;17.640078;59.854596
+366;Pumphuset ;;17.641227;59.854836
+367;Punschmuseet ;;14.859632;56.173529
+368;Pylonen ;;15.407913;60.485562
+369;Rackstadmuseet ;;12.612409;59.671748
+370;Rackstadmuseet-Oppstuhage ;;12.610541;59.671403
+371;Radiomuseet ;;11.945259;57.708516
+372;Radiomuseet ;;11.945860;57.707856
+373;Rahsska Museet ;;11.973458;57.69995
+374;Rahsska Museet ;;11.972805;57.699783
+375;Rarstrands Museum ;;13.158099;58.506633
+376;Regionmuseet Kristianstad ;;14.155236;56.031565
+377;Regionmuseet Vastra Gataland ;;12.340735;58.37427
+378;Regionmuseum Vastra Gataland ;;12.339492;58.374051
+379;Repslagarmuseet ;;12.121867;57.960915
+380;Riksantikvarieembetet Uv Bergslagen ;;15.211360;59.27159
+381;Rodhuset ;;18.718397;63.292922
+382;Rodhuset ;;17.721821;59.616694
+383;Rooseum ;;13.009376;55.604508
+384;Rooseum ;;13.009361;55.604321
+385;Rosenlafs Tryckerimuseum ;;16.622732;60.601476
+386;Roslagsmuseet ;;18.698629;59.758626
+387;Rundradiomuseum ;;15.039588;58.545223
+388;Saab Bilmuseum ;;12.273418;58.270571
+389;Saab Bilmuseum ;;12.276657;58.272019
+390;Sadelmakare abergs Hus ;;18.015209;59.360241
+391;Sala Silvergruva ;;16.573606;59.90853
+392;Saltarvet ;;11.459122;58.243505
+393;Saters Hembygdsmuseum ;;15.757135;60.341479
+394;Scen and Managemuseum ;;13.002772;55.606247
+395;Scoutmuseet i Malme ;;13.011088;55.598756
+396;Sigtuna Museer ;;17.719681;59.615471
+397;Sillmuseum ;;11.543413;57.944957
+398;Silvanum ;;17.125460;60.672034
+399;Silvanum Skogsmuseum ;;17.124851;60.671955
+400;Silvermuseet ;;17.887859;66.051008
+401;Sjafartsmuseet ;;11.933257;57.698922
+402;Sjafartsmuseet ;;16.370520;56.66478
+403;Sjafartsmuseet Med Akvariet ;;11.932540;57.699003
+404;Sjahistoriska Museet ;;18.115407;59.333542
+405;Sjahistoriska Museet ;;18.115076;59.3334
+406;Sjasvedens Finnbygdsmuseum ;;16.023868;61.111256
+407;Sjemanshusmuseum ;;11.935555;58.348104
+408;Skara-Lundsbrunns Jarnvagar Skara Jarnvagsmuseum ;;13.443286;58.385905
+409;Skaraborgs Lansmuseum ;;13.428667;58.385073
+410;Skargardens Sagverks Museum ;;20.354617;63.705661
+411;Skargardsmuseet ;;17.130053;58.662543
+412;Skargardsmuseet i Gamla Oxelasund ;;17.119156;58.667171
+413;Skattkammaren ;;17.631966;59.858122
+414;Skavde Konsthall O Konstmuseum ;;13.850111;58.390332
+415;Skavde Stadsmuseum ;;13.846322;58.389595
+416;Skeleftee Museu... (sample);;20.941615;64.748835
+417;Skelleftee Museum ;;20.941042;64.74899
+418;Skissernas Museum ;;13.197909;55.708067
+419;Skissernas Museum ;;13.198647;55.707821
+420;Skoindustrimuseet ;;15.147064;59.125978
+421;Skolmuseet ;;12.701037;56.048717
+422;Skolmuseet Lundmarkska Skolan ;;15.070390;59.078037
+423;Skulpturens Hus ;;17.992346;59.311531
+424;Slottsholmen ;;12.986527;55.605489
+425;Slottsmuseet ;;15.215558;59.273259
+426;Smalands Jakt Och Fiske Museum ;;15.488535;56.733277
+427;Smalands Museum ;;14.807307;56.875296
+428;Smalands Museum-Sveriges Glasmuseum ;;14.808974;56.875309
+429;Smedsgarden Bruksmuseet ;;16.780833;60.617159
+430;Soderhamns Museum ;;17.044856;61.30101
+431;Sodermanlands Museum ;;17.009588;58.749316
+432;Sodermanlands Museum ;;17.011349;58.750115
+433;Solna Hembygdsmuseum O Hembygdsfarening ;;17.998601;59.364064
+434;Sparvagsmuseet ;;18.098508;59.311523
+435;Sparvagsmuseet ;;18.098380;59.311187
+436;Stads Och Skolmuseet Korpkullen ;;14.547606;59.332951
+437;Stadsmuseet ;;12.828549;55.870671
+438;Stadsmuseet Ostindiska Huset ;;11.963433;57.706319
+439;Stadsmuseum ;;16.658277;56.877505
+440;Statens Museer Far Varldskultur ;;11.978754;57.70763
+441;Stenhuset Konst- O Hantverk ;;16.216119;59.709623
+442;Stiftelsen Beredskapsmuseet ;;12.707082;56.031421
+443;Stiftelsen Faremalsvard ;;15.569375;63.849651
+444;Stiftelsen Smalands Konstarkiv ;;14.036104;57.202163
+445;Stiftelsen Sveriges Invandrarinstitut Och Museum ;;17.865535;59.249025
+446;Stigbergets Borgarrum ;;18.086708;59.317239
+447;Stjarnfors Kvarnmuseum ;;13.629356;60.034161
+448;Stockholms Lans Museum ;;18.043420;59.337471
+449;Stockholms Medeltidsmuseum ;;18.070100;59.328262
+450;Stockholms Stadsmuseum ;;18.071449;59.319975
+451;Stockholms Stadsmuseum ;;18.070693;59.31969
+452;Stora Kopparbergs Museum ;;15.616061;60.600537
+453;Stranda Hembygdsmuseum ;;16.439186;57.035479
+454;Stremstads Museum ;;11.175132;58.939217
+455;Strindbergsmuseet ;;18.056658;59.33843
+456;Strindbergsmuseet ;;18.056642;59.338631
+457;Sundbybergs Museum and Arkiv ;;17.962108;59.364639
+458;Sundsvalls Museum ;;17.312027;62.391387
+459;Svenska Emigrantinstitutet ;;14.809896;56.875977
+460;Sveriges Jarnvagsmuseum ;;17.172415;60.661325
+461;Sveriges Jarnvagsmuseum ;;17.159357;60.661998
+462;Sveriges Rundradiomuseum ;;15.036690;58.542597
+463;Sveriges Vvs Museum ;;16.196044;58.994905
+464;Sveriges Vvs Museum ;;16.196174;58.995199
+465;Tallstorps Industrimuseum ;;13.757172;57.363548
+466;Tanums Hallristningsmuseum ;;11.403850;58.734361
+467;Teatermuseet ;;16.510902;59.378036
+468;Technichus i Mittsverige Ab ;;17.936873;62.630053
+469;Teckningsmuseet ;;13.043599;56.51311
+470;Tegnarmuseet ;;13.191235;55.704362
+471;Teknik Och Sjafartsmuseet ;;12.983435;55.604732
+472;Teknik- Och Sjafartsmuseet ;;12.983109;55.604698
+473;Tekniska Museet ;;18.119307;59.332412
+474;Teknoland Ab ;;15.631901;60.604957
+475;Tennfigurmuseum ;;14.981323;60.743151
+476;Textilmuseet ;;12.938678;57.715106
+477;Textilmuseet i Hagbo ;;16.811933;60.671203
+478;Thielska Galleriet ;;18.149608;59.322323
+479;Thielska Galleriet ;;18.147842;59.322537
+480;Tibro Museum ;;14.158427;58.42443
+481;Tibro Museum ;;14.157969;58.424251
+482;Tidaholms Museum ;;13.965046;58.180697
+483;Tide Leksaksmuseum ;;16.485701;59.506373
+484;Tom Tits Experiment ;;17.624245;59.199896
+485;Traktormuseat ;;22.834188;66.281955
+486;Transport and Industri Museet ;;13.692903;60.024948
+487;Trelleborg Museu... (sample);;13.169422;55.370627
+488;Trelleborgs Sjafartsmuseum ;;13.155770;55.372964
+489;Trollhattans Museum ;;12.291294;58.285816
+490;Tropikhuset ;;11.945126;57.685492
+491;Tullmuseet ;;18.028571;59.336079
+492;Tycho Brahe Museet ;;12.695993;55.90743
+493;Ulricehamns Museum ;;13.413297;57.790206
+494;Universeum ;;11.988307;57.695205
+495;Upplandsmuseet ;;17.634227;59.857689
+496;Upplandsmuseet ;;17.633739;59.858872
+497;Uppsala Konstmuseum ;;17.634554;59.854069
+498;Uppsala Medicinhistoriska Museum ;;17.650915;59.829011
+499;Ur O Guld Antiken i Sodermanland Ab ;;16.593198;59.053765
+500;Vadsbo Museum ;;13.819632;58.708321
+501;Vagnmuseet ;;13.010055;55.60791
+502;Vagverkets Museum ;;16.676324;59.390602
+503;Vallby Friluftsmuseum ;;16.515652;59.620879
+504;Vanermuseet ;;13.143571;58.508961
+505;Vanermuseet ;;13.144621;58.509741
+506;Vanersborgs Museum ;;12.328948;58.379507
+507;Vapentekniska Museet ;;16.508805;59.375405
+508;Varldskulturmuseet ;;11.988682;57.694877
+509;Varmlands Museum ;;13.501706;59.384863
+510;Vasaloppsmuseet ;;14.545376;61.007508
+511;Vasamuseet ;;18.090577;59.328081
+512;Vasamuseet ;;18.092475;59.329056
+513;Vasby Kungsgard ;;16.594916;59.927044
+514;Vasteras Flygmuseum ;;16.625833;59.594078
+515;Vasteras Flygmuseum ;;16.625074;59.59605
+516;Vasteras Konstmuseum ;;16.545484;59.608043
+517;Vasteras Skolmuseum ;;16.546215;59.615823
+518;Vasterbottens Museum ;;20.289640;63.828932
+519;Vastergatlands Museum ;;13.439667;58.389836
+520;Vastmanlands Lans Museum ;;16.543228;59.606832
+521;Vaxholms Fastnings Museum ;;18.355102;59.403061
+522;Veterinarhistoriska Museet ;;13.439615;58.388822
+523;Vetlanda Museum ;;15.082801;57.428341
+524;Vikingabyn Storholmen ;;18.707365;59.759293
+525;Viktor Rydbergsmuseet ;;14.157179;57.784597
+526;Vin and Sprithistoriska Museet ;;18.039115;59.348281
+527;Visby Bilmuseum ;;18.386342;57.651546
+528;Visby Flygmuseum ;;18.325933;57.648893
+529;Vitehall ;;12.076085;57.491321
+530;Vitlycke Museum ;;11.340757;58.700945
+531;Volvo Museum ;;11.819865;57.694836
+532;Volvo Museum ;;11.819293;57.694806
+533;Walmstedtska Garden-Professorshemmet ;;17.631924;59.859389
+534;Werner Museet Gasta ;;14.344813;55.560266
+535;Ystadsbygdens Museum Grabrodraklostret ;;13.819739;55.430876
+536;Zoologiska Museet ;;13.199804;55.709357
+537;Zornmuseet ;;14.539472;61.006763
