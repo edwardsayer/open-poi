@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.openpoi.server.MissingLayerException;
-import org.openpoi.server.PoiManagerFactory;
 import org.openpoi.server.api.Cache;
 import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.PoiSerializer;

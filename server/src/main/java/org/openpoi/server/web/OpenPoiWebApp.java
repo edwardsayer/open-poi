@@ -40,7 +40,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 
 import org.openpoi.server.MissingLayerException;
-import org.openpoi.server.PoiManagerFactory;
 import org.openpoi.server.SimpleJsonPoiSerializer;
 import org.openpoi.server.SimpleMemoryCache;
 import org.openpoi.server.api.Cache;

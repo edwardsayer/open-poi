@@ -14,10 +14,11 @@
  *
  */
 
-package org.openpoi.server;
+package org.openpoi.server.web;
 
+import org.openpoi.server.MissingLayerException;
 import org.openpoi.server.api.PoiManager;
 
-public interface PoiManagerFactory {
+interface PoiManagerFactory {
 	PoiManager create(String layer) throws MissingLayerException;
 }
