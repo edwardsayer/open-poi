@@ -17,6 +17,7 @@ backend-hibernate-spatial/.classpath
 distribution/target
 .metadata
 Servers
+target
 
 
 syntax: regexp
