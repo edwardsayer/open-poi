@@ -16,5 +16,19 @@
     <module>examples</module>
     <module>distribution</module>
   </modules>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <!-- Note: Older versions will not work. -->
+        <version>2.6.1</version>
+        <configuration>
+          <stylesheetfile>${basedir}/src/javadoc/stylesheet.css</stylesheetfile>
+          <javadocDirectory>${basedir}/src/javadoc</javadocDirectory>
+          <docfilessubdirs>true</docfilessubdirs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
 
