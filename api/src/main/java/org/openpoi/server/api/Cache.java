@@ -21,7 +21,7 @@ package org.openpoi.server.api;
  * 
  * <p>Note that implementations of this class must be implemented in a
  * thread safe manner.</p> 
- * @author per
+ * @author Per Liedman (per@liedman.net)
  *
  */
 public interface Cache {

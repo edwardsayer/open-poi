@@ -18,7 +18,24 @@ package org.openpoi.server.api;
 
 import java.util.Collection;
 
+/**
+ * Implements how a collection of POI objects should be serialized into a <code>String</code>.
+ * 
+ * @author Per Liedman (per@liedman.net)
+ *
+ */
 public interface PoiSerializer {
+	/**
+	 * Specifies the MIME type that will be returned
+	 * for queries using this serializer.
+	 * @return the serializer's MIME type
+	 */
 	String getContentType();
+	
+	/**
+	 * Serializes a collection of POI objects into a <code>String/<code>.
+	 * @param pois the POIs to be serialized
+	 * @return the serialized POIs
+	 */
     String serialize(Collection<?> pois);
 }
