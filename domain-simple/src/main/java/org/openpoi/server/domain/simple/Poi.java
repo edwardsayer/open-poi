@@ -23,7 +23,7 @@ import com.vividsolutions.jts.geom.Point;
 
 /**
  * Basic implementation of a POI
- * @author per
+ * @author Per Liedman (per@liedman.net)
  *
  */
 public class Poi {

@@ -28,7 +28,7 @@ import com.vividsolutions.jts.geom.Geometry;
 /**
  * A <code>PoiManager</code> that get its POIs from a
  * <code>MemoryBasedPoiManager</code>.
- * @author per
+ * @author Per Liedman (per@liedman.net)
  */
 public class MemoryBasedPoiManager implements PoiManager {
 	private final PoiMemoryDatabase database;
