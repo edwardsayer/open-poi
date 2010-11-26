@@ -16,6 +16,7 @@
         <include>org.openpoi:domain-simple</include>
         <include>org.openpoi:backend-text</include>
         <include>org.openpoi:backend-hibernate-spatial</include>
+        <include>org.openpoi:cache-memcached</include>
       </includes>
       <binaries>
         <outputDirectory></outputDirectory>

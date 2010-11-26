@@ -13,6 +13,7 @@
     <module>domain-simple</module>
     <module>backend-text</module>
     <module>backend-hibernate-spatial</module>
+    <module>cache-memcached</module>
     <module>examples</module>
     <module>distribution</module>
   </modules>

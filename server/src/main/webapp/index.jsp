@@ -75,7 +75,7 @@ body {
 				}),
 				styleMap: new OpenLayers.StyleMap({
 		                        "default": style,
-		                        "select": {
+		                        "select": {b
 		                            fillColor: "#8aeeef",
 		                            strokeColor: "#32a8a9"
 		                        }
