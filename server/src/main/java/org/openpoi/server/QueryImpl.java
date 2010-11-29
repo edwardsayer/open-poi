@@ -66,12 +66,10 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
 	private int zoomLevel;
 	private Set<Integer> poiIds = new TreeSet<Integer>();
 	private Set<Integer> categoryIds = new TreeSet<Integer>();
-	private int srid;
 	private String text;
+	private Integer srid;
 	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getLayerName()
-	 */
+	@Override
 	public String getLayerName() {
 		return layerName;
 	}
@@ -80,9 +78,7 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
 		this.layerName = layerName;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getWithin()
-	 */
+	@Override
 	public Geometry getWithin() {
 		return within;
 	}
@@ -107,9 +103,7 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
         }
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getZoomLevel()
-	 */
+	@Override
 	public int getZoomLevel() {
 		return zoomLevel;
 	}
@@ -118,9 +112,7 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
 		this.zoomLevel = zoomLevel;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getPoiIds()
-	 */
+	@Override
 	public Set<Integer> getPoiIds() {
 		return poiIds;
 	}
@@ -129,9 +121,7 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
 		poiIds.add(poiId);
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getCategoryIds()
-	 */
+	@Override
 	public Set<Integer> getCategoryIds() {
 		return categoryIds;
 	}
@@ -139,27 +129,18 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
 	public void addCategoryId(int categoryId) {
 		categoryIds.add(categoryId);
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getSrid()
-	 */
-	public int getSrid() {
-		return srid;
-	}
-	
-	public void setSrid(int srid) {
-		this.srid = srid;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.openpoi.server.api.IQuery#getText()
-	 */
+
+	@Override
 	public String getText() {
 		return text;
 	}
 	
 	public void setText(String text) {
 		this.text = text;
+	}
+	
+	public void setSrid(Integer srid) {
+		this.srid = srid;
 	}
 
 	@Override

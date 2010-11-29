@@ -125,6 +125,7 @@ public class GetPoisServlet extends HttpServlet {
                 throw new ServletException("SRID is not an integer (\"srid\").", e);
             }
         }
+        query.setSrid(srid);
         query.setBoundingBox(corners[0].x, corners[0].y, corners[1].x, corners[1].y, srid);
         
         for (int catId : parseCommaSeparatedString(categoriesStr)) {
