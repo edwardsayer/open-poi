@@ -97,7 +97,7 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 	private Set<Class<PluginModule>> getPluginModuleClasses(
 			ServletContext servletContext) throws IOException {
 		Set<Class<PluginModule>> result = new HashSet<Class<PluginModule>>();
-		Set libPaths = servletContext.getResourcePaths("/WEB-INF/lib");
+		Set<?> libPaths = servletContext.getResourcePaths("/WEB-INF/lib");
 		for (Object jar : libPaths) {
 			try {
 				JarInputStream jis = new JarInputStream(servletContext.getResource((String) jar).openStream());
@@ -119,6 +119,11 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 								} catch (ClassNotFoundException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
+								} catch (ClassCastException e) {
+									servletContext.log("Class " + classFile.getName() 
+											+ " is annotated as OpenPoiPluginModule, "
+											+ "but does not implement PluginModule. "
+											+ "Plugin " + jar + " will not be loaded.");
 								}
 							}
 							} catch (IOException e) {
