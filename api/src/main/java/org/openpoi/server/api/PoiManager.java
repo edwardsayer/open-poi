@@ -18,41 +18,11 @@ package org.openpoi.server.api;
 
 import java.util.Collection;
 
-import com.vividsolutions.jts.geom.Geometry;
-
 /**
  * <p>Responsible for handling POI queries within one or more layers.
  * OpenPoi is configured to use a class implementing <code>PoiManager</code>
  * per layer, and PoiManager's will then be instantiated to respond
  * to queries.</p>
- * 
- * <p>OpenPoi does not enforce any specific organization of POIs, but queries
- * supply the following parameters, which an implementation is free to interpret
- * or even ignore:</p>
- * <ul>
- * 	<li>
- * 		<b>Layer name</b> - the name of the layer being queried, which is very
- *		important in the case where more than one layer use the same
- *		<code>PoiManager</code> class.
- *	</li>
- * 	<li>
- * 		<b>Zoom level</b> - an implementation may choose to only show a subset of
- * 		the POIs for a certain zoom level, so the zoom level being queried is
- * 		supplied.
- *	</li>
- * 	<li>
- * 		<b>Geometry</b> - the geometry which the POIs should be within. This is
- * 		normally a bounding box, although the interface allows arbitrary geometries.
- *	</li>
- * 	<li>
- * 		<b>Categories</b> - POIs within a layer can be divided into categories, and
- * 		each query specifies which categories are being queried. The interface does
- * 		not make any assumptions about how the categories are organized, except that
- * 		each category must be possible to identify by a unique identifier. A
- * 		<code>PoiManager</code> implementation is free to ignore the categories if
- * 		it does not support them.
- *	</li>
- * </ul>
  * 
  * <p><code>PoiManager</code> instances are intended to be short-lived,
  * i.e. creation time should be quick, and the implementation should not rely
@@ -75,8 +45,7 @@ public interface PoiManager {
 	 * @param categoryIds the IDs of the categories being queried
 	 * @return the POI objects that match the query
 	 */
-    public abstract Collection<?> getPoisWithinGeometry(String layerName, int zoomLevel, Geometry within,
-            Collection<Integer> categoryIds);
+    public abstract Collection<?> getPoisWithinGeometry(Query query);
 
     /**
      * Tells the <code>PoiManager</code> that one or more queries will be made to

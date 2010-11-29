@@ -18,35 +18,34 @@ package org.openpoi.server.backend.hibernatespatial;
 
 import java.util.Collection;
 
-
 import org.hibernate.Session;
 import org.hibernatespatial.GeometryUserType;
 import org.openpoi.server.api.PoiManager;
+import org.openpoi.server.api.Query;
 
 import com.google.inject.Inject;
-import com.vividsolutions.jts.geom.Geometry;
 
-public class DefaultPoiManager implements PoiManager {
+public class HibernateSpatialPoiManager implements PoiManager {
     private Session session;
     
     @Inject
-    public DefaultPoiManager() {
+    public HibernateSpatialPoiManager() {
         // Do nothing
     }
     
     /* (non-Javadoc)
      * @see net.liedman.poiserver.PoiManager#getPoisWithinGeometry(com.vividsolutions.jts.geom.Geometry, java.util.Collection)
      */
-    public Collection<?> getPoisWithinGeometry(String layerName, int zoomLevel, Geometry within, Collection<Integer> categoryIds) {
-        if (categoryIds.size() > 0) {
+    public Collection<?> getPoisWithinGeometry(Query query) {
+        if (query.getCategoryIds().size() > 0) {
             return session.getNamedQuery("getPoisWithinGeometryAndCategories")
-                .setParameter("within", within, GeometryUserType.TYPE)
-                .setParameterList("categoryIds", categoryIds)
+                .setParameter("within", query.getWithin(), GeometryUserType.TYPE)
+                .setParameterList("categoryIds", query.getCategoryIds())
                 .list();
         } else {
             return session.getNamedQuery("getPoisWithinGeometry")
-            .setParameter("within", within, GeometryUserType.TYPE)
-            .list();
+	            .setParameter("within", query.getWithin(), GeometryUserType.TYPE)
+	            .list();
         }
     }
 

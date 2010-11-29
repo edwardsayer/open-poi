@@ -30,16 +30,11 @@ import org.openpoi.server.MissingLayerException;
 import org.openpoi.server.api.Cache;
 import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.PoiSerializer;
-
+import org.openpoi.server.api.Query;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.CoordinateSequence;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.LinearRing;
-import com.vividsolutions.jts.geom.Polygon;
-import com.vividsolutions.jts.geom.impl.CoordinateArraySequence;
 
 /**
  * Servlet implementation class GetPoisServlet
@@ -47,7 +42,6 @@ import com.vividsolutions.jts.geom.impl.CoordinateArraySequence;
 @Singleton
 public class GetPoisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
 	
 	private final PoiSerializer poiSerializer;;
 	private final Cache cache;
@@ -65,37 +59,17 @@ public class GetPoisServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String layer;
-		String path = request.getRequestURI();
-		int lastSlash = path.lastIndexOf('/');
-		if (lastSlash >= 0) {
-			layer = path.substring(lastSlash + 1);
-		} else {
-			layer = path;
-		}
-		
-	    String bboxStr = request.getParameter("bbox");
-        String sridStr = request.getParameter("srid");
-	    String categoriesStr = request.getParameter("cat");
-	    String zoomLevelStr = request.getParameter("z");
-	    String jsonp = request.getParameter("jsonp");
-	    
-	    String cacheKey = layer + "/" + bboxStr + "/" + sridStr + "/" 
-	    	+ zoomLevelStr + "/" + categoriesStr;
-	    
+		Query query = parseRequest(request);
+		String cacheKey = query.toString();
 	    String result = cache.get(cacheKey);
 	    
 	    if (result == null) {
-            Polygon bbox = parseBoundingBox(bboxStr, sridStr);
-            Collection<Integer> categoryIds = parseCategoryIds(categoriesStr);
-            int zoomLevel = parseZoomLevel(zoomLevelStr);
-    	    
             try {
-	            PoiManager poiManager = poiManagerFactory.create(layer);
+	            PoiManager poiManager = poiManagerFactory.create(query.getLayerName());
 	    	    poiManager.beginTransaction();
 	            
 	    	    try {
-	        	    Collection<?> pois = poiManager.getPoisWithinGeometry(layer, zoomLevel, bbox, categoryIds);
+	        	    Collection<?> pois = poiManager.getPoisWithinGeometry(query);
 	        	            		
 	        	    result = poiSerializer.serialize(pois);
 	        	    cache.put(cacheKey, result);
@@ -107,11 +81,12 @@ public class GetPoisServlet extends HttpServlet {
 	    	    }
             } catch (MissingLayerException mle) {
             	response.sendError(HttpServletResponse.SC_BAD_REQUEST, "No layer called \"" 
-            			+ layer + "\" has been defined.");
+            			+ query.getLayerName() + "\" has been defined.");
             	return;
             }
 	    }
 
+		String jsonp = request.getParameter("jsonp");
 	    if (jsonp != null) {
 	    	result = jsonp + "(" + result + ")";
 	    }
@@ -121,6 +96,45 @@ public class GetPoisServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 		writer.write(result);
 		writer.close();
+	}
+
+	private Query parseRequest(HttpServletRequest request) throws ServletException {
+		Query query = new Query();
+		
+		String path = request.getRequestURI();
+		int lastSlash = path.lastIndexOf('/');
+		if (lastSlash >= 0) {
+			query.setLayerName(path.substring(lastSlash + 1));
+		} else {
+			query.setLayerName(path);
+		}
+
+	    String bboxStr = request.getParameter("bbox");
+        String sridStr = request.getParameter("srid");
+	    String categoriesStr = request.getParameter("cat");
+	    String poisStr = request.getParameter("poi");
+	    String zoomLevelStr = request.getParameter("z");
+	    
+        Coordinate[] corners = parseBoundingBox(bboxStr, sridStr);
+        query.setBoundingBox(corners[0].x, corners[0].y, corners[1].x, corners[1].y);
+        
+        for (int catId : parseCommaSeparatedString(categoriesStr)) {
+        	query.addCategoryId(catId);
+        }
+        for (int poiId : parseCommaSeparatedString(poisStr)) {
+        	query.addPoiId(poiId);
+        }
+        query.setZoomLevel(parseZoomLevel(zoomLevelStr));
+        if (sridStr != null) {
+            try {
+                query.setSrid(Integer.parseInt(sridStr));
+            } catch (NumberFormatException e) {
+                throw new ServletException("SRID is not an integer (\"srid\").", e);
+            }
+        }
+        query.setText(request.getParameter("q"));
+        
+		return null;
 	}
 
 	private int parseZoomLevel(String zoomLevelStr) throws ServletException {
@@ -135,7 +149,7 @@ public class GetPoisServlet extends HttpServlet {
 		}
 	}
 
-	private Collection<Integer> parseCategoryIds(String parameter) throws ServletException {
+	private Collection<Integer> parseCommaSeparatedString(String parameter) throws ServletException {
 	    if (parameter == null) {
 	        return new ArrayList<Integer>(0);
 	    }
@@ -149,7 +163,7 @@ public class GetPoisServlet extends HttpServlet {
         return result;
     }
 
-    private Polygon parseBoundingBox(String parameter, String sridStr) throws ServletException {
+    private Coordinate[] parseBoundingBox(String parameter, String sridStr) throws ServletException {
         if (parameter == null) {
             throw new ServletException("Missing bounding box parameter (\"bbox\").");
         }
@@ -159,34 +173,19 @@ public class GetPoisServlet extends HttpServlet {
             throw new ServletException("Bounding box must contain exactly four values: x1, y1, x2, y2.");
         }
 
-        CoordinateSequence corners;
         try {
             double x1 = Double.parseDouble(parts[0]);
             double y1 = Double.parseDouble(parts[1]);
             double x2 = Double.parseDouble(parts[2]);
             double y2 = Double.parseDouble(parts[3]);
-            corners = new CoordinateArraySequence(new Coordinate[] {
+            return new Coordinate[] {
                 new Coordinate(x1, y1),
-                new Coordinate(x2, y1),
                 new Coordinate(x2, y2),
-                new Coordinate(x1, y2),
-                new Coordinate(x1, y1)
-            });
+            };
         } catch (NumberFormatException e) {
             throw new ServletException("Bounding box (\"bbox\") could not be " +
                     "parsed, since one or more coordinate is not a valid double.", e);
         }
-     
-        Polygon polygon = new Polygon(new LinearRing(corners, GEOMETRY_FACTORY), null, GEOMETRY_FACTORY);
-        if (sridStr != null) {
-            try {
-                polygon.setSRID(Integer.parseInt(sridStr));
-            } catch (NumberFormatException e) {
-                throw new ServletException("SRID is not an integer (\"srid\").", e);
-            }
-        }
-        
-        return polygon;
     }
 
     /**

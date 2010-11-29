@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.openpoi.server.api.PoiManager;
+import org.openpoi.server.api.Query;
 import org.openpoi.server.domain.simple.Poi;
 
 import com.google.inject.Inject;
-import com.vividsolutions.jts.geom.Geometry;
 
 /**
  * A <code>PoiManager</code> that get its POIs from a
@@ -54,11 +54,10 @@ public class MemoryBasedPoiManager implements PoiManager {
 	}
 
 	@Override
-	public Collection<?> getPoisWithinGeometry(String layerName, int zoomLevel,
-			Geometry within, Collection<Integer> categoryIds) {
+	public Collection<?> getPoisWithinGeometry(Query query) {
 		Collection<Poi> result = new ArrayList<Poi>();
-		for (Poi poi : database.getPois(layerName)) {
-			if (poi.getLocation().within(within)) {
+		for (Poi poi : database.getPois(query.getLayerName())) {
+			if (poi.getLocation().within(query.getWithin())) {
 				result.add(poi);
 			}
 		}
