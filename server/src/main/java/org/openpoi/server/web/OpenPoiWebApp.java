@@ -62,8 +62,8 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 	private Map<String, Object> initParameters;
 	private int cacheMaxSize;
 
-	private Set<Class<PluginModule>> pluginModuleClasses;
-	private static Map<String, Class<PoiManager>> layerMapping;
+	private Set<Class<? extends PluginModule>> pluginModuleClasses;
+	private static Map<String, Class<? extends PoiManager>> layerMapping;
 	private static Injector injector;
 	
 	@Override
@@ -94,9 +94,9 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 		return injector.getInstance(PoiManagerFactory.class).create(layer);
 	}
 
-	private Set<Class<PluginModule>> getPluginModuleClasses(
+	private Set<Class<? extends PluginModule>> getPluginModuleClasses(
 			ServletContext servletContext) throws IOException {
-		Set<Class<PluginModule>> result = new HashSet<Class<PluginModule>>();
+		Set<Class<? extends PluginModule>> result = new HashSet<Class<? extends PluginModule>>();
 		Set<?> libPaths = servletContext.getResourcePaths("/WEB-INF/lib");
 		for (Object jar : libPaths) {
 			try {
@@ -114,16 +114,18 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 								&& aa.getAnnotation("org.openpoi.server.api.annotations.OpenPoiPluginModule") != null;
 							if (isPluginModule) {
 								try {
-									result.add((Class<PluginModule>) Class
-											.forName(classFile.getName()));
+									Class<?> cls = Class.forName(classFile.getName());
+									if (PluginModule.class.isAssignableFrom(cls)) {
+										result.add(cls.asSubclass(PluginModule.class));
+									} else {
+										servletContext.log("Class " + classFile.getName() 
+												+ " is annotated as OpenPoiPluginModule, "
+												+ "but does not implement PluginModule. "
+												+ "Plugin " + jar + " will not be loaded.");
+									}
 								} catch (ClassNotFoundException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
-								} catch (ClassCastException e) {
-									servletContext.log("Class " + classFile.getName() 
-											+ " is annotated as OpenPoiPluginModule, "
-											+ "but does not implement PluginModule. "
-											+ "Plugin " + jar + " will not be loaded.");
 								}
 							}
 							} catch (IOException e) {
@@ -132,7 +134,8 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 						}
 					}
 				} catch (IOException e) {
-					servletContext.log("IOException while examining JAR \"" + jar + "\"; file \"" + jarEntry.getName() + "\".");
+					servletContext.log("IOException while examining JAR \"" + jar + "\"; "
+							+ (jarEntry != null ? " file \"" + jarEntry.getName() + "\"." : " (no file?!)"));
 					throw e;
 				} catch (RuntimeException e) {
 					servletContext.log("IOException while examining JAR \"" + jar + "\"; file \"" + jarEntry.getName() + "\".");
@@ -149,12 +152,20 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
 	}
 
 	private void initializeSettings(ServletContext servletContext) {
-		layerMapping = new HashMap<String, Class<PoiManager>>();
+		layerMapping = new HashMap<String, Class<? extends PoiManager>>();
 		
 		for (String paramName : initParameters.keySet()) {
 			Matcher match = LAYER_MAPPING_PATTERN.matcher(paramName);
 			if (match.matches()) {
-				layerMapping.put(match.group(1), (Class<PoiManager>) tryGetClass((String) initParameters.get(paramName), null));
+				Class<?> cls = tryGetClass((String) initParameters.get(paramName), null);
+				String layerName = match.group(1);
+				if (PoiManager.class.isAssignableFrom(cls)) {
+					layerMapping.put(layerName, cls.asSubclass(PoiManager.class));
+				} else {
+					servletContext.log("Layer \"" + layerName 
+							+ "\" declares a POI manager that does not implement PoiManager (" 
+							+ cls.getName() + ").");
+				}
 			}
 		}
 		
@@ -190,7 +201,7 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
                 serve("/Pois/*").with(GetPoisServlet.class);
             }
         });
-		for (Class<PluginModule> pluginModuleClass : pluginModuleClasses) {
+		for (Class<? extends PluginModule> pluginModuleClass : pluginModuleClasses) {
 			try {
 				PluginModule pluginModule = pluginModuleClass.newInstance();
 				pluginModule.setInitParameters(initParameters);
@@ -229,7 +240,7 @@ public class OpenPoiWebApp extends GuiceServletContextListener {
     private static class DefaultPoiManagerFactory implements PoiManagerFactory {
 		@Override
 		public PoiManager create(String layer) throws MissingLayerException {
-			Class<PoiManager> poiManagerClass = layerMapping.get(layer);
+			Class<? extends PoiManager> poiManagerClass = layerMapping.get(layer);
 			if (poiManagerClass != null) {
 				return injector.getInstance(poiManagerClass);
 			} else {
