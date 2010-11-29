@@ -29,7 +29,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.openpoi.server.MissingLayerException;
 import org.openpoi.server.QueryImpl;
 import org.openpoi.server.api.Cache;
-import org.openpoi.server.api.Query;
 import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.PoiSerializer;
 import org.openpoi.server.api.Query;
@@ -117,8 +116,16 @@ public class GetPoisServlet extends HttpServlet {
 	    String poisStr = request.getParameter("poi");
 	    String zoomLevelStr = request.getParameter("z");
 	    
-        Coordinate[] corners = parseBoundingBox(bboxStr, sridStr);
-        query.setBoundingBox(corners[0].x, corners[0].y, corners[1].x, corners[1].y);
+        Coordinate[] corners = parseBoundingBox(bboxStr);
+        Integer srid = null;
+        if (sridStr != null) {
+            try {
+                srid = new Integer(sridStr);
+            } catch (NumberFormatException e) {
+                throw new ServletException("SRID is not an integer (\"srid\").", e);
+            }
+        }
+        query.setBoundingBox(corners[0].x, corners[0].y, corners[1].x, corners[1].y, srid);
         
         for (int catId : parseCommaSeparatedString(categoriesStr)) {
         	query.addCategoryId(catId);
@@ -127,13 +134,6 @@ public class GetPoisServlet extends HttpServlet {
         	query.addPoiId(poiId);
         }
         query.setZoomLevel(parseZoomLevel(zoomLevelStr));
-        if (sridStr != null) {
-            try {
-                query.setSrid(Integer.parseInt(sridStr));
-            } catch (NumberFormatException e) {
-                throw new ServletException("SRID is not an integer (\"srid\").", e);
-            }
-        }
         query.setText(request.getParameter("q"));
         
 		return null;
@@ -165,7 +165,7 @@ public class GetPoisServlet extends HttpServlet {
         return result;
     }
 
-    private Coordinate[] parseBoundingBox(String parameter, String sridStr) throws ServletException {
+    private Coordinate[] parseBoundingBox(String parameter) throws ServletException {
         if (parameter == null) {
             throw new ServletException("Missing bounding box parameter (\"bbox\").");
         }

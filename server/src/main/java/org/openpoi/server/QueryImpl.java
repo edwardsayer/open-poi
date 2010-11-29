@@ -87,7 +87,7 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
 		return within;
 	}
 	
-	public void setBoundingBox(double x1, double y1, double x2, double y2) {
+	public void setBoundingBox(double x1, double y1, double x2, double y2, Integer srid) {
 		xmin = Math.min(x1, x2);
 		ymin = Math.min(y1, y2);
 		xmax = Math.max(x1, x2);
@@ -100,7 +100,11 @@ public final class QueryImpl implements org.openpoi.server.api.Query {
                 new Coordinate(x1, y2),
                 new Coordinate(x1, y1)
             });
-        this.within = new Polygon(new LinearRing(corners, GEOMETRY_FACTORY), null, GEOMETRY_FACTORY);
+        within = new Polygon(new LinearRing(corners, GEOMETRY_FACTORY), null, GEOMETRY_FACTORY);
+        
+        if (srid != null) {
+        	within.setSRID(srid);
+        }
 	}
 	
 	/* (non-Javadoc)
