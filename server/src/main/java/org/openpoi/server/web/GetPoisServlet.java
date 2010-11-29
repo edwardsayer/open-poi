@@ -27,7 +27,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.openpoi.server.MissingLayerException;
+import org.openpoi.server.QueryImpl;
 import org.openpoi.server.api.Cache;
+import org.openpoi.server.api.Query;
 import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.PoiSerializer;
 import org.openpoi.server.api.Query;
@@ -99,7 +101,7 @@ public class GetPoisServlet extends HttpServlet {
 	}
 
 	private Query parseRequest(HttpServletRequest request) throws ServletException {
-		Query query = new Query();
+		QueryImpl query = new QueryImpl();
 		
 		String path = request.getRequestURI();
 		int lastSlash = path.lastIndexOf('/');

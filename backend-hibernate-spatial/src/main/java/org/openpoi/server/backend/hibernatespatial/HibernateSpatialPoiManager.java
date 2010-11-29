@@ -20,8 +20,8 @@ import java.util.Collection;
 
 import org.hibernate.Session;
 import org.hibernatespatial.GeometryUserType;
-import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.Query;
+import org.openpoi.server.api.PoiManager;
 
 import com.google.inject.Inject;
 

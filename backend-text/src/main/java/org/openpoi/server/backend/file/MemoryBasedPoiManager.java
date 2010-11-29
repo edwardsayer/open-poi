@@ -19,8 +19,8 @@ package org.openpoi.server.backend.file;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.api.Query;
+import org.openpoi.server.api.PoiManager;
 import org.openpoi.server.domain.simple.Poi;
 
 import com.google.inject.Inject;
