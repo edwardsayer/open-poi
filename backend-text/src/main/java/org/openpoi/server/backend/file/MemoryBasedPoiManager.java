@@ -54,7 +54,7 @@ public class MemoryBasedPoiManager implements PoiManager {
 	}
 
 	@Override
-	public Collection<?> getPoisWithinGeometry(Query query) {
+	public Collection<?> getPois(Query query) {
 		Collection<Poi> result = new ArrayList<Poi>();
 		for (Poi poi : database.getPois(query.getLayerName())) {
 			if (poi.getLocation().within(query.getWithin())) {

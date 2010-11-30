@@ -45,7 +45,7 @@ public interface PoiManager {
 	 * @param categoryIds the IDs of the categories being queried
 	 * @return the POI objects that match the query
 	 */
-    public abstract Collection<?> getPoisWithinGeometry(Query query);
+    public abstract Collection<?> getPois(Query query);
 
     /**
      * Tells the <code>PoiManager</code> that one or more queries will be made to

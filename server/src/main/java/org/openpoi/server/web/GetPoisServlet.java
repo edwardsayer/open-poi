@@ -70,7 +70,7 @@ public class GetPoisServlet extends HttpServlet {
 	    	    poiManager.beginTransaction();
 	            
 	    	    try {
-	        	    Collection<?> pois = poiManager.getPoisWithinGeometry(query);
+	        	    Collection<?> pois = poiManager.getPois(query);
 	        	            		
 	        	    result = poiSerializer.serialize(pois);
 	        	    cache.put(cacheKey, result);

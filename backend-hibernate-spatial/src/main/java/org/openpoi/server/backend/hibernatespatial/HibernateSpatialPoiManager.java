@@ -36,7 +36,7 @@ public class HibernateSpatialPoiManager implements PoiManager {
     /* (non-Javadoc)
      * @see net.liedman.poiserver.PoiManager#getPoisWithinGeometry(com.vividsolutions.jts.geom.Geometry, java.util.Collection)
      */
-    public Collection<?> getPoisWithinGeometry(Query query) {
+    public Collection<?> getPois(Query query) {
         if (query.getCategoryIds().size() > 0) {
             return session.getNamedQuery("getPoisWithinGeometryAndCategories")
                 .setParameter("within", query.getWithin(), GeometryUserType.TYPE)
