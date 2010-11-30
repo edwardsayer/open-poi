@@ -137,7 +137,7 @@ public class GetPoisServlet extends HttpServlet {
         query.setZoomLevel(parseZoomLevel(zoomLevelStr));
         query.setText(request.getParameter("q"));
         
-		return null;
+		return query;
 	}
 
 	private int parseZoomLevel(String zoomLevelStr) throws ServletException {
